@@ -1,0 +1,39 @@
+.wrapper {
+  width: 100px;
+  height: 100px;
+  display: grid;
+  grid-template-areas:
+    "kotak1 kotak2"
+    "kotak3 kotak4";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+}
+
+.kotak1 {
+  grid-area: kotak1;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+.kotak2 {
+  grid-area: kotak2;
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+}
+
+.kotak3 {
+  grid-area: kotak3;
+  width: 100px;
+  height: 100px;
+  background-color: green;
+}
+
+.kotak4 {
+  grid-area: kotak4;
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+}
