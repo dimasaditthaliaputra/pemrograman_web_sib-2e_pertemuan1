@@ -16,6 +16,7 @@
             <th>Tahun</th>
             <th>Rating</th>
         </tr>
+        <?php ; ?>
         <?php
         $movie = array(
             array("Avengers: Invinity War", 2018, 8.7),

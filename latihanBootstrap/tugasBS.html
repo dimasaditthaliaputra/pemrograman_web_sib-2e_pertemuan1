@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Bootstrap</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0px;
+            padding: 0px;
+            min-height: 100vh;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top">
+        <a class="navbar-brand font-weight-bold" href="#">Biodata</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-light font-weight-bold" href="#biodata">Biodata</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light font-weight-bold" href="#">Contact Me</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="jumbotron jumbotron-fluid bg-primary text-white mb-0">
+        <div class="container">
+            <h1 class="display-4 font-weight-bold">Hi, Saya Dimas</h1>
+            <p class="lead font-weight-light">Mahasiswa Sistem Informasi dan Bisnis Politeknik Negeri Malang.</p>
+        </div>
+    </div>
+    <div class="container mt-5 mb-5" id="biodata">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <img src="tower.jpg" class="img-fluid rounded shadow mb-3" alt="foto saya">
+                <ul class="list-unstyled">
+                    <li class="mb-2"><strong>Nama:</strong> Dimas Adit Thalia Putra</li>
+                    <li class="mb-2"><strong>Email:</strong> 244107060037@student.polinema.ac.id</li>
+                    <li class="mb-2"><strong>NIM:</strong> 244107060037</li>
+                </ul>
+            </div>
+            <div class="col-md-8 mb-4">
+                <h2 class="font-weight-bold mb-4">Tentang Saya</h2>
+                <p class="text-justify" style="line-height: 1.8;">
+                    Saya adalah mahasiswa <strong>Sistem Informasi Bisnis</strong> di Politeknik Negeri Malang yang
+                    memiliki passion dalam
+                    bidang teknologi informasi dan bisnis digital. Sebagai mahasiswa yang aktif, saya selalu antusias
+                    untuk
+                    mempelajari teknologi terbaru dan mengaplikasikannya dalam proyek-proyek yang bermanfaat.
+                </p>
+                <p class="text-justify" style="line-height: 1.8;">
+                    Dengan latar belakang di Sistem Informasi Bisnis, saya memiliki pemahaman yang baik dalam
+                    mengintegrasikan
+                    teknologi dengan kebutuhan bisnis untuk menciptakan solusi yang efektif dan efisien.
+                </p>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-dark text-white mt-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5 class="font-weight-bold">Tentang</h5>
+                    <p class="text-muted">Mahasiswa Sistem Informasi dan Bisnis yang passionate dalam pengembangan web
+                        dan teknologi.</p>
+                </div>
+                <div class="col-md-6 mb-3 text-right">
+                    <h5 class="font-weight-bold">Kontak</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li>Email: 244107060037@student.polinema.ac.id</li>
+                        <li>Malang, Jawa Timur</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-secondary">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="mb-0 text-muted">&copy; 2025 Dimas Adit</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
