@@ -17,48 +17,48 @@ if (!empty($_SESSION['username'])) {
             pesan('danger', "Mengubah Jabatan Karena: " . pg_last_error($koneksi));
         }
         header("Location: ../index.php?page=jabatan");
-    }
-} elseif (empty($_GET['anggota'])) {
-    $user_id = antiinjection($koneksi, $_POST['id']);
-    $nama = antiinjection($koneksi, $_POST['nama']);
-    $jabatan = antiinjection($koneksi, $_POST['jabatan']);
-    $jenis_kelamin = antiinjection($koneksi, $_POST['jenis_kelamin']);
-    $alamat = antiinjection($koneksi, $_POST['alamat']);
-    $no_telp = antiinjection($koneksi, $_POST['no_telp']);
-    $username = antiinjection($koneksi, $_POST['username']);
-    $query_anggota = "UPDATE anggota SET nama = '$nama',
+    } elseif (!empty($_GET['anggota'])) {
+        $user_id = antiinjection($koneksi, $_POST['id']);
+        $nama = antiinjection($koneksi, $_POST['nama']);
+        $jabatan = antiinjection($koneksi, $_POST['jabatan']);
+        $jenis_kelamin = antiinjection($koneksi, $_POST['jenis_kelamin']);
+        $alamat = antiinjection($koneksi, $_POST['alamat']);
+        $no_telp = antiinjection($koneksi, $_POST['no_telp']);
+        $username = antiinjection($koneksi, $_POST['username']);
+        $query_anggota = "UPDATE anggota SET nama = '$nama',
         jenis_kelamin = '$jenis_kelamin',
         alamat = '$alamat',
         no_telp = '$no_telp',
         jabatan_id = '$jabatan'
         WHERE user_id = '$user_id'";
 
-    if (pg_query($koneksi, $query_anggota)) {
-        if (!empty($_POST['password'])) {
-            $password = $_POST['password'];
-            // Generate random salt
-            $salt = bin2hex(random_bytes(16));
-            // Gabungkan salt dengan password
-            $combined_password = $salt . $password;
-            // Hash password dengan salt
-            $hashed_password = password_hash($combined_password, PASSWORD_BCRYPT);
+        if (pg_query($koneksi, $query_anggota)) {
+            if (!empty($_POST['password'])) {
+                $password = $_POST['password'];
+                // Generate random salt
+                $salt = bin2hex(random_bytes(16));
+                // Gabungkan salt dengan password
+                $combined_password = $salt . $password;
+                // Hash password dengan salt
+                $hashed_password = password_hash($combined_password, PASSWORD_BCRYPT);
 
-            $query_user = "UPDATE user SET username = '$username', password = '$hashed_password', salt = '$salt' WHERE id = '$user_id'";
-            if (pg_query($koneksi, $query_user)) {
-                pesan('success', "Anggota Telah Diubah.");
+                $query_user = "UPDATE \"user\" SET username = '$username', password = '$hashed_password', salt = '$salt' WHERE id = '$user_id'";
+                if (pg_query($koneksi, $query_user)) {
+                    pesan('success', "Anggota Telah Diubah.");
+                } else {
+                    pesan('warning', "Data Anggota Berhasil Diubah, Tetapi Password Gagal Diubah Karena: " . pg_last_error($koneksi));
+                }
             } else {
-                pesan('warning', "Data Anggota Berhasil Diubah, Tetapi Password Gagal Diubah Karena: " . pg_last_error($koneksi));
+                $query_user = "UPDATE \"user\" SET username = '$username' WHERE id = '$user_id'";
+                if (pg_query($koneksi, $query_user)) {
+                    pesan('success', "Anggota Telah Diubah.");
+                } else {
+                    pesan('warning', "Data Anggota Berhasil Diubah, Tetapi Username Gagal Diubah Karena: " . pg_last_error($koneksi));
+                }
             }
         } else {
-            $query_user = "UPDATE user SET username = '$username' WHERE id = '$user_id'";
-            if (pg_query($koneksi, $query_user)) {
-                pesan('success', "Anggota Telah Diubah.");
-            } else {
-                pesan('warning', "Data Anggota Berhasil Diubah, Tetapi Username Gagal Diubah Karena: " . pg_last_error($koneksi));
-            }
+            pesan('danger', "Mengubah Anggota Karena: " . pg_last_error($koneksi));
         }
-    } else {
-        pesan('danger', "Mengubah Anggota Karena: " . pg_last_error($koneksi));
+        header("Location: ../index.php?page=anggota");
     }
-    header("Location: ../index.php?page=anggota");
 }

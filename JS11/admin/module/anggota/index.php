@@ -10,14 +10,14 @@ pt-3 pb-2 mb-3 border-bottom">
             </div>
             <div class="row">
                 <div class="col-lg-3">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bstarget="#exampleModal" data-bs-whatever="@mdo">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
                         <i class="fa fa-plus"></i> Tambah Anggota</button>
                 </div>
             </div>
             <?php if (isset($_SESSION['_flashdata'])) {
                 echo "<br>";
                 foreach ($_SESSION['_flashdata'] as $key => $val) {
-                    echo get_flashdata($key);
+                    echo getflashdata($key);
                 }
             }
             ?>
@@ -35,7 +35,7 @@ pt-3 pb-2 mb-3 border-bottom">
                     <tbody>
                         <?php
                         $no = 1;
-                        $query = "SELECT * FROM anggota a, jabatan j, user u WHERE a.jabatan_id =
+                        $query = "SELECT * FROM anggota a, jabatan j, \"user\" u WHERE a.jabatan_id =
 j.id AND a.user_id = u.id order by a.id desc";
                         $result = pg_query($koneksi, $query);
                         while ($row = pg_fetch_assoc($result)) {
@@ -49,7 +49,7 @@ j.id AND a.user_id = u.id order by a.id desc";
                                     <a href="index.php?page=anggota/edit&id=<?php echo
                                                                             $row['user_id']; ?>" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o" ariahidden="true"></i> Edit</a>
                                     <a href="fungsi/hapus.php?anggota=hapus&id=<?php echo
-                                                                                $row['user_id']; ?>" onclick="javascript:return confirm('Hapus Data Jabatan ?');" class="btn btndanger btn-xs"><i class="fa fa-trash-o" aria-hidden="true"></i> Hapus</a>
+                                                                                $row['user_id']; ?>" onclick="javascript:return confirm('Hapus Data Jabatan ?');" class="btn btn-danger btn-xs"><i class="fa fa-trash-o" aria-hidden="true"></i> Hapus</a>
                                 </td>
                             </tr>
                         <?php
@@ -135,7 +135,7 @@ j.id AND a.user_id = u.id order by a.id desc";
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bsdismiss="modal"><i class="fa fa-times" aria-hidden="true"></i> Close</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i> Close</button>
                                 <button type="submit" class="btn btn-primary"><i class="fa fafloppy-o" aria-hidden="true"></i> Simpan</button>
                             </div>
                         </form>

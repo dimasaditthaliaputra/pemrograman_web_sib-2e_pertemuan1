@@ -17,7 +17,7 @@ pt-3 pb-2 mb-3 border-bottom">
             <?php if (isset($_SESSION['_flashdata'])) {
                 echo "<br>";
                 foreach ($_SESSION['_flashdata'] as $key => $val) {
-                    echo get_flashdata($key);
+                    echo getflashdata($key);
                 }
             }
             ?>

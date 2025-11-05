@@ -15,19 +15,19 @@ if (!empty($_SESSION['username'])) {
             pesan('danger', "Jabatan Tidak Terhapus Karena: " . pg_last_error($koneksi));
         }
         header("Location: ../index.php?page=jabatan");
-    }
-} elseif (!empty($_GET['anggota'])) {
-    $id = antiinjection($koneksi, $_GET['id']);
-    $query = "DELETE FROM user WHERE id = '$id'";
-    if (pg_query($koneksi, $query)) {
-        $query2 = "DELETE FROM anggota WHERE user_id = '$id'";
-        if (pg_query($koneksi, $query2)) {
-            pesan('success', "Anggota Telah Terhapus.");
+    } elseif (!empty($_GET['anggota'])) {
+        $id = antiinjection($koneksi, $_GET['id']);
+        $query = "DELETE FROM anggota WHERE user_id = '$id'";
+        if (pg_query($koneksi, $query)) {
+            $query2 = "DELETE FROM \"user\" WHERE id = '$id'";
+            if (pg_query($koneksi, $query2)) {
+                pesan('success', "Anggota Telah Terhapus.");
+            } else {
+                pesan('warning', "Data Login Terhapus Tetapi Data Anggota Tidak Terhapus Karena: " . pg_last_error($koneksi));
+            }
         } else {
-            pesan('warning', "Data Login Terhapus Tetapi Data Anggota Tidak Terhapus Karena: " . pg_last_error($koneksi));
+            pesan('danger', "Anggota Tidak Terhapus Karena: " . pg_last_error($koneksi));
         }
-    } else {
-        pesan('danger', "Anggota Tidak Terhapus Karena: " . pg_last_error($koneksi));
+        header("Location: ../index.php?page=anggota");
     }
-    header("Location: ../index.php?page=anggota");
 }
