@@ -1,0 +1,13 @@
+<?php
+    date_default_timezone_set("Asia/Jakarta");
+    $host = "localhost";
+    $port = "5432";
+    $user = "postgres";
+    $pass = "";
+    $db = "prakwebdb";
+    $koneksi = pg_connect("host=$host port=$port dbname=$db user=$user password=$pass") or die("Koneksi gagal");
+
+    if (!$koneksi) {
+        die("Koneksi gagal: " . pg_last_error());
+    }
+?>
